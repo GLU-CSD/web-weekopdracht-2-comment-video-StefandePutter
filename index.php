@@ -1,8 +1,10 @@
 <?php
-include("config.php");
-include("reactions.php");
+include "config.php";
+include "reactions.php";
+include "api.php";
 
 $getReactions = Reactions::getReactions(1);
+$getMovies = getMovies();
 //uncomment de volgende regel om te kijken hoe de array van je reactions eruit ziet
 // echo "<pre>".var_dump($getReactions)."</pre>";
 
@@ -19,8 +21,6 @@ if(!empty($_POST)){
     if(isset($setReaction['error']) && $setReaction['error'] != ''){
         prettyDump($setReaction['error']);
     }
-    
-
 }
 
 ?>
@@ -43,6 +43,16 @@ if(!empty($_POST)){
         <label for="message">message:</label>
         <input type="text" id="message" name="message"><br>
         <button type="submit" value="Submit">submit</button>
+    </form>
+    <form action="movie.php" method="get">
+        <select name="movieId">
+            <?php
+                foreach ($getMovies as $movie) {
+                    echo "<option value=$movie->id>$movie->title</option>";
+                }
+            ?>
+        </select>
+        <button type="submit" value="Submit">Submit</button>
     </form>
     <?php
         foreach ($getReactions as $reaction) {

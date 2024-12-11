@@ -47,7 +47,7 @@ class Reactions
     static function getReactions(int $videoId){
         global $con;
         $array = [];
-        $grqry = $con->prepare("SELECT reactions.id,reactions.name,reactions.message,videos.title,videos.url FROM reactions INNER JOIN videos ON reactions.video_id=videos.id WHERE videos.id = $videoId;");
+        $grqry = $con->prepare("SELECT reactions.id,reactions.name,reactions.message,videos.title,videos.url FROM reactions INNER JOIN videos ON reactions.video_id=videos.id WHERE reactions.video_id = $videoId;");
         if($grqry === false) {
             prettyDump( mysqli_error($con) );
         } else{

@@ -26,15 +26,24 @@ if ($err) {
 } else {
     // echo $response;
     $response = json_decode($response);
-    $results = $response->results;
 }
 
 
 // var_dump($results[0]);
 // echo "<br>";
-// foreach($results as $result) {
-//     echo "<br>";
-//     echo "<img src='https://image.tmdb.org/t/p/w500/$result->poster_path'>";
-//     echo $result->id;
-//     echo $result->title;
-// }
+
+function getMovies() {
+  global $response;
+  $results = $response->results;
+  return $results;
+}
+
+function getMovie(int $id){
+  global $response;
+  $movies = $response->results;
+  foreach($movies as $movie) {
+    if ($id == $movie->id){
+      return $movie;
+    }
+  }
+}
