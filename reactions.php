@@ -44,21 +44,23 @@ class Reactions
         }
     }
     
-    static function getReactions(){
+    static function getReactions(int $videoId){
         global $con;
         $array = [];
-        $grqry = $con->prepare("SELECT id,name,email FROM reactions;");
+        $grqry = $con->prepare("SELECT reactions.id,reactions.name,reactions.message,videos.title,videos.url FROM reactions INNER JOIN videos ON reactions.video_id=videos.id WHERE videos.id = $videoId;");
         if($grqry === false) {
             prettyDump( mysqli_error($con) );
         } else{
-            $grqry->bind_result($id,$name,$email);
+            $grqry->bind_result($id,$name,$message,$title,$url);
             if($grqry->execute()){
                 $grqry->store_result();
                 while($grqry->fetch()){
                     $array[] = [
                         'id' => $id,
                         'name' => $name,
-                        'email'=> $email
+                        'message'=> $message,
+                        'title'=> $title,
+                        'url'=> $url
                     ];
                 }
             }
