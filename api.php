@@ -28,7 +28,6 @@ class Api {
       $response = json_decode($response);
     }
 
-    $response;
     $results = $response->results;
     return $results;
     }

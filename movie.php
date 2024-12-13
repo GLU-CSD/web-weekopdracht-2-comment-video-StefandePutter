@@ -68,6 +68,7 @@ if(isset($setReaction['error']) && $setReaction['error'] != ''){
         echo "<div id=box2>";
         
             echo "<h1 id='title'>$movie->title</h1>";
+            //if
             if(isset($setReaction['error']) && $setReaction['error'] != ''){
                 echo "<p id='error'>";
                 foreach ($setReaction['error'] as $error) {
@@ -75,22 +76,22 @@ if(isset($setReaction['error']) && $setReaction['error'] != ''){
                 }
                 echo "</p>";
             }
-                echo "<form id='comment-form' method='post'>
+            echo "<form id='comment-form' method='post'>
                     <input type='text' placeholder='name' value='$name' id='name' name='name'>
                     <input type='text' placeholder='email' id='email' value='$email' name='email'>
                     <input type='text' placeholder='comment' value='$message' id='message' name='message'>
                     <input type='hidden' name='movie_id' value='$movie_id'>
                     <button type='submit' value='Submit'>></button>
-                </form>";
-                echo "<div id='comment-section'>";
-                    if (!empty($getReactions)) {
-                        foreach ($getReactions as $reaction) {
-                            echo "<p>". $reaction['name'] . ": " . $reaction['message'] . "</p>";
-                        }
-                    } else {
-                        echo "<p style='color:gray'> no comments yet</p>";
+                  </form>";
+            echo "<div id='comment-section'>";
+                if (!empty($getReactions)) {
+                    foreach ($getReactions as $reaction) {
+                        echo "<p>". $reaction['name'] . ": " . $reaction['message'] . "</p>";
                     }
-                echo "</div>";
+                } else {
+                    echo "<p style='color:gray'> no comments yet</p>";
+                }
+            echo "</div>";
             ?>  
         </div>
     </div>
