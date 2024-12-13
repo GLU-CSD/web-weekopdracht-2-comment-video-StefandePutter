@@ -1,39 +1,88 @@
-html, body{
-    background-color: black;
-    color: white;
-    margin: 0px;
-    padding: 0px;
-    width: 100%;
-    height: 100%;
+html,
+body {
+	background-color: black;
+	color: white;
+	margin: 0px;
+	padding: 0px;
+	width: 100%;
+	height: 100%;
+}
+
+#page-title {
+	text-align: center;
+	margin: 0;
+	font-size: 35px;
 }
 
 #content {
-    position: relative;
-    display: flex;
-    width: 100%;
-    height: 100%;
+	position: relative;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
+	width: 100%;
+	align-items: center;
+}
+.movieForm button {
+	width: 100%;
+	height: 45px;
+	font-size: 30px;
+	color: black;
+	background-color: #008cba;
+	transition-duration: 0.4s;
 }
 
-#content p {
-    position: relative;
-    height: 10%;
+.movieForm button:hover {
+	color: white;
+	background-color: black;
+	border: 2px solid #008cba;
 }
 
-#box2 {
-    width: 70%;
-    height: 100%;
-    text-align: center;
-    box-sizing: border-box;
+.movies {
+	height: 30vh;
+	border: 1px solid white;
+	overflow: hidden;
+	overflow-y: auto;
 }
 
-#comment-section {
-    height: 80%;
-    margin: 50px auto;
-    width: 60%;
-    text-align: left;
-    box-sizing:border-box;
+.movies .movie {
+	display: flex;
 }
 
-#comment-section p:nth-of-type(2n) {
-    text-align: right;
+.movie label {
+	width: 100%;
+	font-size: 20px;
+}
+.movie input[type="radio"]:checked + label {
+	font-weight: bold;
+	background-color: #555;
+}
+
+::-webkit-scrollbar {
+	width: 10px;
+	margin-left: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+	background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+	background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+	background: #555;
+}
+
+input[type="radio"] {
+	/* Add if not using autoprefixer */
+	-webkit-appearance: none;
+	appearance: none;
+	/* For iOS < 15 to remove gradient background */
+	background-color: #fff;
+	/* Not removed via appearance */
+	margin: 0;
 }
